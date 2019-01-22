@@ -5,3 +5,5 @@ def string_splosion(str)
      .join
 end
 puts string_splosion("Code")
+puts string_splosion("abc")
+puts string_splosion("ab")
