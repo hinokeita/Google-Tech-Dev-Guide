@@ -1,0 +1,33 @@
+カプセル化や継承を使ったコードについてのディスカッション
+　・Student#getNameを使っている部分がおかしいんじゃないかとの話が出たが、
+　　親クラスのPersonクラスにgetNameメソッドが定義されているため、問題なかった。
+　・Person#getIDは存在しないため、使用している部分はエラーになる。
+　・java内では、すべてがObjectのため、ObjectにStudentを代入している部分も正常に動作する。
+
+public class Parson{
+  private String name;
+  public String getName() { return name; }
+}
+
+public class Student extends Person{
+  private int id;
+  public int getID() { return id; }
+}
+
+public class Faculty extened Person{
+  private String id;
+  public String getID() { return id; }
+}
+
+実行
+Student s = new Student();
+Person p = new Person();
+Person q = new Person();
+Faculty f = new Faculty();
+Object o = new Object();
+
+String n = s.getName();
+p = s;
+int m = p.getID
+f = q;
+o = s;
