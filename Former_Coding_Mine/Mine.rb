@@ -5,7 +5,7 @@
 # ・入力されたときに2桁の数値になっているかチェック
 # ・開けたときに0だったら連鎖していく機能
 
-class Minesweeper
+class MineSweeper
   attr_reader   :height, :weight, :x, :y
   attr_accessor :internal_ban, :view_ban
 
@@ -87,7 +87,7 @@ class Minesweeper
 
 end
 
-mine = Minesweeper.new
+mine = MineSweeper.new
 begin
   mine.complite?
   mine.print_ban
