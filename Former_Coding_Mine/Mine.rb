@@ -4,7 +4,6 @@
 # 追加する機能
 # ・入力されたときに2桁の数値になっているかチェック
 # ・開けたときに0だったら連鎖していく機能
-# ・ボムだけが残ったらクリアに
 
 class Minesweeper
   attr_reader   :height, :weight, :x, :y
@@ -41,9 +40,9 @@ class Minesweeper
   end
 
   def complite?
-    view_ban.map do |v|
-      v.select{|item| item == 0}
-    end
+    view_ban.flatten
+            .select{|item| item == 0}
+            .empty?
   end
 
   def cheat
@@ -93,7 +92,7 @@ end
 
 mine = Minesweeper.new
 begin
-  mine.complite?
+  break if mine.complite?
   mine.print_ban
   mine.debug
   puts "openする場所を2桁の数値で入力してください(縦横)"
