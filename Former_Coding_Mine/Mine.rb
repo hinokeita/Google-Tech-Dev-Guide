@@ -18,15 +18,6 @@ class Minesweeper
     end
   end
 
-  def debug
-    temp = internal_ban.map do |v|
-      v.join
-    end
-    puts "-------------デバッグ用----------------"
-    puts temp
-    puts "--------------------------------------"
-  end
-
   def open(input)
     @x,@y = input.split("")
     if bomb?
@@ -40,14 +31,10 @@ class Minesweeper
   end
 
   def complite?
-    view_ban.flatten
-            .select{|item| item == 0}
-            .empty?
-  end
-
-  def cheat
-    internal_ban.map do
-
+    lists = view_ban.flatten.select{|item| item == 0}
+    if lists.empty?
+      puts "あなたの勝利です"
+      exit
     end
   end
 
@@ -88,11 +75,21 @@ class Minesweeper
   def rand
     Random.rand(1..8).to_i
   end
+
+  def debug
+    temp = internal_ban.map do |v|
+      v.join
+    end
+    puts "-------------デバッグ用----------------"
+    puts temp
+    puts "--------------------------------------"
+  end
+
 end
 
 mine = Minesweeper.new
 begin
-  break if mine.complite?
+  mine.complite?
   mine.print_ban
   mine.debug
   puts "openする場所を2桁の数値で入力してください(縦横)"
